@@ -38,7 +38,7 @@ print("П2:", x2_optimal, "кг")
 num_of_products = len([x for x in res.x if x > 0])
 print("Число изготавливаемых видов продукции: ", num_of_products)
 
-# A) Изменение плана выпуска и выручки от продажи при изменении цены
+# A) Изменение плана выпуска и выручки от продажи при изменении цены на 10%
 c_new = [-22, -44]
 a_res_new = simplex_maximize(c_new, A_ub, b_ub, bounds)
 
