@@ -28,55 +28,81 @@ a_up_x2 = 44
 a_down_x1 = 18
 a_down_x2 = 36
 
-def monte_carlo(value_x1, value_x2):
-    best_x1 = 0
-    best_x2 = 0
-    best_profit = 0
+def monte_carlo():
+    x1 = random.uniform(0, 100) # случайное значение x1 от 0 до 100
+    x2 = random.uniform(0, 100) # случайное значение x2 от 0 до 100
 
-    iterations = 10000
+    if 0.6 * (x1 + x2) <= x1 and 0.4 * (x1 + x2) <= x2 and 2 * x1 + 4 * x2 <= 100:
+        return True
+    else:
+        return False
 
-    for _ in range(iterations):
-        x1 = random.uniform(0, 100)  # Случайное значение для x1
-        x2 = random.uniform(0, 100)  # Случайное значение для x2
+num_trials = 1000000 # количество экспериментов
+successful_trials = 0 # количество удачных случаев
 
-        # Ограничения
-        constraint1 = 0.6 * (x1 + x2) <= x1
-        constraint2 = 0.4 * (x1 + x2) <= x2
-        constraint3 = 2 * x1 + 4 * x2 <= 100
+for _ in range(num_trials):
+    if monte_carlo():
+        successful_trials += 1
 
-        if constraint1 and constraint2 and constraint3:
-            # Целевая функция, которая меняется в зависимости от подпунктов A и B
-            profit = value_x1 * x1 + value_x2 * x2
+success_rate = successful_trials / num_trials
 
-            if profit > best_profit:
-                best_profit = profit
-                best_x1 = x1
-                best_x2 = x2
+print("Удачных случаев:", successful_trials)
+print("Вероятность удачного исхода:", success_rate)
 
-    return best_x1, best_x2, best_profit
+optimal_x1 = 0
+max_revenue = 0
 
-# Default
-optimal_def_x1, optimal_def_x2, optimal_def_profit = monte_carlo(def_x1, def_x2)
+for _ in range(num_trials):
+    x1 = random.uniform(0, 100)
+    x2 = random.uniform(0, 100)
+
+    if 0.6 * (x1 + x2) <= x1 and 0.4 * (x1 + x2) <= x2 and 2 * x1 + 4 * x2 <= 100:
+        revenue = 20 * x1 + 40 * x2
+        if revenue > max_revenue:
+            max_revenue = revenue
+            optimal_x1 = x1
+
+optimal_x2 = 100 - optimal_x1
+num_product_1 = optimal_x1 / 2
+num_product_2 = optimal_x2 / 4
 
 print("Оптимальное распределение сырья:")
-print("П1:", optimal_def_x1, "кг")
-print("П2:", optimal_def_x2, "кг")
-print("Максимальная выручка:", optimal_def_profit)
+print("x1 (П1):", optimal_x1, "кг")
+print("x2 (П2):", optimal_x2, "кг")
+print("Число изготавливаемых видов продукции:")
+print("П1:", num_product_1)
+print("П2:", num_product_2)
 
-# A1
-optimal_a1_x1, optimal_a1_x2, optimal_a1_profit = monte_carlo(a_up_x1, a_up_x2)
+# а2) Изменение цен на 10% снижение
+price1_a2 = 20 * 0.9
+price2_a2 = 40 * 0.9
 
-print("Оптимальное распределение сырья при увеличении цены на 10%:")
-print("П1:", optimal_a1_x1, "кг")
-print("П2:", optimal_a1_x2, "кг")
-print("Максимальная выручка:", optimal_a1_profit)
+revenue_a21 = price1_a2 * num_product_1
+revenue_a22 = price2_a2 * num_product_2
+total_revenue = revenue_a21 + revenue_a22
 
-# A2
-optimal_a2_x1, optimal_a2_x2, optimal_a2_profit = monte_carlo(a_down_x1, a_down_x2)
+print("Изменение цен на 10% снижение:")
+print("Выручка от продажи П1:", revenue_a21)
+print("Выручка от продажи П2:", revenue_a22)
+print("Общая выручка:", total_revenue)
 
-print("Оптимальное распределение сырья при уменьшении цены на 10%:")
-print("П1:", optimal_a2_x1, "кг")
-print("П2:", optimal_a2_x2, "кг")
-print("Максимальная выручка:", optimal_a2_profit)
+# а1) Изменение цен на 10% увеличение
+price_1 = 20 / 0.9
+price_2 = 40 / 0.9
+
+revenue_1 = price_1 * num_product_1
+revenue_2 = price_2 * num_product_2
+total_revenue = revenue_1 + revenue_2
+
+print("Изменение цен на 10% увеличение:")
+print("Выручка от продажи П1:", revenue_1)
+print("Выручка от продажи П2:", revenue_2)
+print("Общая выручка:", total_revenue)
+
+# б) Увеличение суточного запаса на 10%
+
+
+
+
 
 
