@@ -3,6 +3,10 @@ from scipy.optimize import linprog
 
 # C = 20 * x1 + 40 * x2
 #
+# A1 = 22 * x1 + 44 * x2
+#
+# A2 = 18 * x1 + 36 * x2
+#
 # 0.6 * (x1 + x2) <= x1
 # 0.4 * (x1 + x2) <= x2
 # 2 * x1 + 4 * x2 <= 100
