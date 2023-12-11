@@ -1,9 +1,13 @@
 {% extends 'main/layout.html' %}
 
-{% block title %} Main page {% endblock %}
+{% block title %} {{obj_titles.main_page}} {% endblock %}
 
 {% block content %}
-    <h1>Main page</h1>
-    <p>Main page</p>
-https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css
+    <div class="base_center">
+        <h1>{{obj_titles.main_page}}</h1>
+        <p1> Мы разработали приложение по решению оптимизационных задач, область применения таких задач можно прочесть во вкладке(слева)
+            "О проекте", для связи "Контакты", для решения задачи "Монте-Карло" и "Симплекс", чтобы вернуться сюда "Главная страница", а выйти
+            из профиля "Выйти", надеюсь разберешься!
+        </p1>
+    </div>
 {% endblock %}
