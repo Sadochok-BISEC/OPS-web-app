@@ -1,0 +1,4 @@
+log:  admin
+pass: admin123
+
+python manage.py changepassword <имя пользователя>.
