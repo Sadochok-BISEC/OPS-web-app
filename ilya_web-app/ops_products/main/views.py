@@ -3,8 +3,8 @@ from django.shortcuts import render
 
 data = {
     # In the form(on the right)
-    'obj_titles':{
-        'main_page': 'Привет!',
+    'obj_message_titles':{
+        'hello': 'Привет!',
         'about': 'О проекте',
         'contacts': 'Контакты',
     },
@@ -15,6 +15,7 @@ data = {
         'phone_number':'Телефон:(29)4911431 - Беларусь',
     },
     'obj_tab_titles':{
+        # Generally
         'main_page':'Главная страница',
         'simplex_page':'Симплекс метод',
         'monte_page':'Монте-Карло метод',
@@ -23,7 +24,6 @@ data = {
         'exit_page':'Выйти',
     }
 }
-
 
 def home(request):
     return render(request, 'main/main.html', data)
