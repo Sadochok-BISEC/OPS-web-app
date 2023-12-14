@@ -1,6 +1,6 @@
 {% extends 'main/layout.html' %}
 
-{% block title %} {{obj_message_titles.main_page}}, {{ user.username|default:'Guest' }} {% endblock %}
+{% block title %} {{obj_message_titles.main_page}} {{user.username|default:'Guest'}} {% endblock %}
 
 {% block content %}
     <div class="base_center">
