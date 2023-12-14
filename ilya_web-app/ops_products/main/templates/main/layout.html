@@ -28,7 +28,7 @@
             <a href=""><li><i class="fa-solid fa-square-root-variable"></i> {{obj_tab_titles.monte_page}}</li></a>
             <a href="{% url 'about' %}"><li><i class="fa-solid fa-circle-info"></i> {{obj_tab_titles.about_page}}</li></a>
             <a href="{% url 'contacts' %}"><li><i class="fa-solid fa-phone"></i> {{obj_tab_titles.contacts_page}}</li></a>
-            <a href=""><li><i class="fa-solid fa-right-from-bracket"></i> {{obj_tab_titles.exit_page}}</li></a>
+            <a onclick="location.href='{% url 'logout' %}?next=/ops_products/empty_home'"><li><i class="fa-solid fa-right-from-bracket"></i> {{obj_tab_titles.exit_page}}</li></a>
         </ul>
          <style>
           a {
