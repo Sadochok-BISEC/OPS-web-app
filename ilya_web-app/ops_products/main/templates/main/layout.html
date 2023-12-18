@@ -25,7 +25,7 @@
         <ul>
             <a href="{% url 'home' %}"><li><i class="fa-solid fa-house"></i> {{obj_tab_titles.main_page}}</li></a>
             <a href="{% url 'simplex' %}"><li><i class="fa-solid fa-subscript"></i> {{obj_tab_titles.simplex_page}}</li></a>
-            <a href=""><li><i class="fa-solid fa-square-root-variable"></i> {{obj_tab_titles.monte_page}}</li></a>
+            <a href="{% url 'monte_karlo' %}"><li><i class="fa-solid fa-square-root-variable"></i> {{obj_tab_titles.monte_page}}</li></a>
             <a href="{% url 'about' %}"><li><i class="fa-solid fa-circle-info"></i> {{obj_tab_titles.about_page}}</li></a>
             <a href="{% url 'contacts' %}"><li><i class="fa-solid fa-phone"></i> {{obj_tab_titles.contacts_page}}</li></a>
             <a onclick="location.href='{% url 'logout' %}?next=/ops_products/empty_home'"><li><i class="fa-solid fa-right-from-bracket"></i> {{obj_tab_titles.exit_page}}</li></a>
