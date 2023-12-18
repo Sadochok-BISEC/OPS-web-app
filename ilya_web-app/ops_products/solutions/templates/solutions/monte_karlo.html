@@ -1,10 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'solutions/sol_layout.html' %}
 
-</body>
-</html>
+{% block title %}  {% endblock %}
+
+{% block content %}
+    <div class="task">
+         <form action="" method="post">
+            {% csrf_token %}
+             <button name="btn_run_to_compute" id="btn_run_to_compute" class="button">Решить задачу</button>
+            <button id="btn_default_values" class="button">По умолчанию</button>
+        </form>
+
+<!-- Output of sulution -->
+
+        <label>Решение Монте-Карло методом</label><br>
+        {% if x1 and x2 and revenue %}
+            <label>Оптимальное распределение сырья:</label><br>
+            <label>Продкуция 1(кг.): {{ x1 }}</label><br>
+            <label>Продкуция 2(кг.): {{ x2 }}</label><br>
+            <label>Изменение плана выпуска и выручки от продажи при изменении цены на 10%(увеличение):</label><br>
+            <label>Продкуция 1(кг.): {{ x1A }}</label><br>
+            <label>Продкуция 2(кг.): {{ x2A }}</label><br>
+            <p>Выручка от продажи : = {{ a_res_new }} дн.ед.</p>
+            <label>Изменение плана выпуска и выручки от продажи при увеличении запаса сырья на 10%:</label><br>
+            <label>Продкуция 1(кг.): {{ x1B }}</label><br>
+            <label>Продкуция 2(кг.): {{ x2B }}</label><br>
+            <p>Выручка от продажи : = {{ b_res_new }} дн.ед.</p>
+
+
+
+            {% if plot %}
+                <h2>Graph:</h2>
+                <img src="{{ plot }}" alt="Graph">
+            {% endif %}
+        {% endif %}
+
+
+
+    </div>
+
+{% endblock %}
