@@ -10,9 +10,10 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-    <link rel="stylesheet" href="{% static 'main/css/contacts.css' %}">
-    <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'solutions/css/solution_page.css' %}">
     <script src="https://kit.fontawesome.com/e7c78025cc.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
 </head>
 <body>
     <aside>
@@ -20,12 +21,12 @@
         <span class="fanLogo">Оптимизация  Проектных  Решений</span>
         <h3>Навигация</h3>
         <ul>
-            <a href="{% url 'home' %}"><li><i class="fa-solid fa-house"></i> {{obj_tab_titles.main_page}}</li></a>
-            <a href=""><li><i class="fa-solid fa-subscript"></i> {{obj_tab_titles.simplex_page}}</li></a>
-            <a href=""><li><i class="fa-solid fa-square-root-variable"></i> {{obj_tab_titles.monte_page}}</li></a>
-            <a href="{% url 'about' %}"><li><i class="fa-solid fa-circle-info"></i> {{obj_tab_titles.about_page}}</li></a>
-            <a href="{% url 'contacts' %}"><li><i class="fa-solid fa-phone"></i> {{obj_tab_titles.contacts_page}}</li></a>
-            <a onclick="location.href='{% url 'logout' %}?next=/ops_products/empty_home'"><li><i class="fa-solid fa-right-from-bracket"></i> {{obj_tab_titles.exit_page}}</li></a>
+            <a href="{% url 'home' %}"><li><i class="fa-solid fa-house"></i> Главная страница</li></a>
+            <a href="{% url 'simplex' %}"><li><i class="fa-solid fa-subscript"></i> Симплекс метод</li></a>
+            <a href="{% url 'monte_karlo' %}"><li><i class="fa-solid fa-square-root-variable"></i> Монте-Карло метод</li></a>
+            <a href="{% url 'about' %}"><li><i class="fa-solid fa-circle-info"></i> О проекте</li></a>
+            <a href="{% url 'contacts' %}"><li><i class="fa-solid fa-phone"></i> Контакты</li></a>
+            <a onclick="location.href='{% url 'logout' %}?next=/ops_products/empty_home'"><li><i class="fa-solid fa-right-from-bracket"></i> Выйти</li></a>
         </ul>
          <style>
           a {
@@ -34,59 +35,58 @@
         </style>
     </aside>
     <main>
-        <div class="contact_information">
-        <h1>{{obj_titles.about}}</h1>
-        <p1>{{obj_contacts_info.txt_message}}</p1>
-        <p></p>
-        <p1>Наше приложение может использоваться в различных отраслях, включая:</p1>
-        <ul>
-            <a><li>Предприятие производит продукцию двух видов: П1 и П2. Объём сбыта продукции П1 составляет не менее 60 %</li></a>
-            <a><li>общего объема реализации продукции обоих видов. Для изготовления продукции П1 и П2 используется одно и то же сырье,</li></a>
-            <a><li>суточный запас которого равен </li></a>
-                <form>
-                    <input type="text" id="txt_daily_supply" name="txt_daily_supply" value="100"><br>
-                </form>
-            <a><li>кг. </li></a>
-            <a><li>Расход сырья на единицу продукции П1 равен </li></a>
-                <form>
-                    <input type="text" id="txt_material_consumption_1" name="txt_material_consumption_1" value="2"><br>
-                </form>
-            <a><li>кг., </li></a>
-            <a><li>а на единицу продукции П2 - </li></a>
-                <form>
-                    <input type="text" id="txt_material_consumption_2" name="txt_material_consumption_2" value="4"><br>
-                </form>
-            <a><li>кг. </li></a>
-            <a><li>Цены продукции П1 и П2 – </li></a>
-                <form>
-                    <input type="text" id="txt_product_prices_1" name="txt_product_prices_1" value="20"><a><li> </li></a>
-                    <input type="text" id="txt_product_prices_2" name="txt_product_prices_2" value="40"><br>
-                </form>
-            <a><li>ден. ед. соответственно. </li></a>
-            <a><li>Определить оптимальное распределение сырья для изготовления продукции П1 и П2.</li></a>
-            <a><li>им будет при этом число изготавливаемых видов продукции?</li></a>
-            <a><li></li></a>
-            <a><li>Как изменятся план выпуска и выручка от продажи, если:</li></a>
-            <a><li>а) из-за конкуренции на рынке цена каждого из видов продукции может снизиться (увеличиться) на </li></a>
-                <form>
-                    <input type="text" id="txt_condition_a" name="txt_condition_a" value="10"><br>
-                </form>
-            <a><li>%; </li></a>
-            <a><li>б) предприятие может закупить дополнительное сырье и увеличить суточный запас на </li></a>
-                <form>
-                    <input type="text" id="txt_condition_b" name="txt_condition_b" value="10"><br>
-                </form>
-            <a><li>%; </li></a>
-            <a><li>какова может быть при этом допустимая цена дополнительного сырья (теневая цена)?</li></a>
-    </ul>
-            <form>
-                <label>Оптимальное распределение сырья::</label>
-                <label>Продкуция 1 и 2:</label>
-            </form>
-    </div>
+        <div class="task">
+             <!-- Task description -->
+            <label>Предприятие производит продукцию двух видов: П1 и П2. Объём сбыта продукции П1 составляет не менее</label>
+            <input type="text" id="txt_products_sales_volume" name="txt_products_sales_volume" value="60" size="2">%.</input>
+            <label>общего объема реализации продукции обоих видов.</label>
+            <label>Для изготовления продукции П1 и П2 используется одно и то же сырье, суточный запас которого равен</label>
+            <input type="text" id="txt_daily_supply" name="txt_daily_supply" value="100" size="2">кг.,</input><br>
+            <label>Расход сырья на единицу продукции П1 равен</label>
+            <input type="text" id="txt_material_consumption_1" name="txt_material_consumption_1" value="2" size="2">кг.,</input>
+                <br>
+            <label>а на единицу продукции П2 - </label>
+            <input type="text" id="txt_material_consumption_2" name="txt_material_consumption_2" value="4" size="2">кг.</input>
+            <label>Цены продукции П1 и П2 – </label>
+            <input type="text" id="txt_product_prices_1" name="txt_product_prices_1" value="20" size="2">
+            <input type="text" id="txt_product_prices_2" name="txt_product_prices_2" value="40" size="2">ден. ед. соответственно.</input>
+            <label>Определить оптимальное распределение сырья для изготовления продукции П1 и П2.</label>
+            <label>Каким будет при этом число изготавливаемых видов продукции?</label>
+            <label>Как изменятся план выпуска и выручка от продажи, если:</label>
+
+            <label>a) из-за конкуренции на рынке цена каждого из видов продукции может снизиться (увеличиться) на</label>
+            <input type="text" id="txt_condition_a" name="txt_condition_a" value="10" size="2">%.</input>
+            <label>б) предприятие может закупить дополнительное сырье и увеличить суточный запас на</label>
+            <input type="text" id="txt_condition_b" name="txt_condition_b" value="10" size="2">%.</input>
+            <label>Какова может быть при этом допустимая цена дополнительного сырья (теневая цена)?</label>
+            <br><br>
+
+             <!-- Controls -->
+            <input type="checkbox" class="custom-checkbox" id="check_edit_task" name="check_edit_task" value="Изменить задачу">
+                <label for="check_edit_task"> Изменить задачу</label><br>
+            <input type="checkbox" class="custom-checkbox" id="check_show_graph" name="check_show_graph" value="Выводить график">
+                <label for="check_show_graph">Выводить график</label><br>
+            <input type="checkbox" class="custom-checkbox" id="check_gomory" name="check_gomory" value="Округлить(Гомори)">
+                <label for="check_gomory"> Округлить(Гомори)</label><br>
+            <input type="checkbox" class="custom-checkbox" id="check_show_iterations" name="check_show_iterations" value="Показать итерации">
+                <label for="check_show_iterations"> Показать итерации</label><br><br>
+
+
+            <div class="custom-select" style="width:200px;">
+                <select>
+                    <option value="0">Тип графика</option>
+                    <option value="1">3d</option>
+                    <option value="2">2d</option>
+                </select>
+            </div>
+
+            <script src="{% static 'solutions/js/cmb_graphics.js' %}"></script>
+        </div>
+
         {% block content %}
 
         {% endblock %}
+
     </main>
 </body>
 </html>
