@@ -1,0 +1,258 @@
+body{
+    background: #2c2c2c;
+}
+
+/* Navigation window left */
+
+aside{
+    float: left;
+    background: #181818;
+    width: 20%;
+    padding: 2.5%;
+    height: 100vh;
+    color: #fff;
+    border-right: 5px solid #4d4d4d;
+}
+
+aside img{
+    width: 80px;
+    float: left;
+}
+
+aside .fanLogo{
+    font-size: 15px;
+    margin-left: 0px;
+    font-weight: bold;
+    position: relative;
+    top: 8px;
+}
+
+aside h3{
+    margin-top: 40px;
+    font-size: 28px;
+}
+
+aside ul {list-style: none}
+aside ul li{
+    color: #fff;
+    display: block;
+    margin-top: 20px;
+    transition: transform .4s ease;
+}
+
+aside ul li:hover, aside ul a:hover{
+    color: #eb5959;
+    text-decoration: none;
+    transform: scale(1.05);
+}
+
+/* Button */
+
+.button{
+    background-color: #eeba0b; /* yellow */
+    display: inline-block;
+    padding: 10px 50px;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    border-radius: 8px;
+    margin: 4px 20px;
+}
+
+.button:active{
+  transform: translateY(2px);
+}
+
+/* Combobox */
+/* The container must be positioned relative: */
+.custom-select {
+  position: relative;
+  font-family: Arial;
+  background-color: #eeba0b;
+  border-color: #000000;
+}
+
+.custom-select select {
+  display: none; /*hide original SELECT element: */
+}
+
+.select-selected {
+  background-color: #eeba0b;
+}
+
+/* Style the arrow inside the select element: */
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+
+/* Point the arrow upwards when the select box is open (active): */
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #fff transparent;
+  top: 7px;
+}
+
+/* Style the items (options), including the selected item: */
+.select-items div,.select-selected {
+  color: #ffffff;
+  padding: 1px 5px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+}
+
+/* Style items (options): */
+.select-items {
+  position: absolute;
+  background-color: #000000;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+/* Hide the items when the select box is closed: */
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Checkbox */
+
+.custom-checkbox {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+.custom-checkbox+label {
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+  color: #ffffff;
+}
+.custom-checkbox+label::before {
+  content: '';
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+  flex-grow: 0;
+  border: 1px solid #bdbcad;
+  border-radius: 0.25em;
+  margin-right: 0.5em;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 50% 50%;
+}
+
+.custom-checkbox:checked+label::before {
+  border-color: #eeba0b;
+  background-color: #eeba0b;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
+}
+
+/* Checkbox hover styles */
+.custom-checkbox:not(:disabled):not(:checked)+label:hover::before {
+  border-color: #eeba0b;
+}
+/* Styles for the active state of the checkbox (when you click on it) */
+.custom-checkbox:not(:disabled):active+label::before {
+  background-color: #b3d7ff;
+  border-color: #eeba0b;
+}
+/* Styles for the checkbox that has focus */
+.custom-checkbox:focus+label::before {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+/* Styles for a checkbox that has focus and is not in the checked state */
+.custom-checkbox:focus:not(:checked)+label::before {
+  border-color: #ffff80;
+}
+/* Styles for a checkbox that is in the disabled state */
+.custom-checkbox:disabled+label::before {
+  background-color: #e9ecef;
+}
+
+/* Radio button */
+ /* For input element type="radio" */
+  .custom-radio {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+  }
+  /* For label element .custom-radio */
+  .custom-radio+label {
+    display: inline-flex;
+    align-items: center;
+    user-select: none;
+  }
+  /* Create pseudo-element for label */
+  .custom-radio+label::before {
+    content: '';
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    flex-shrink: 0;
+    flex-grow: 0;
+    border: 1px solid #adb5bd;
+    border-radius: 50%;
+    margin-right: 0.5em;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 50% 50%;
+  }
+  /* Radio hover styles */
+  .custom-radio:not(:disabled):not(:checked)+label:hover::before {
+    border-color: #eeba0b; /*yellow*/
+  }
+  /* Styles for the active radio button (when clicked on it) */
+  .custom-radio:not(:disabled):active+label::before {
+    background-color: #b3d7ff;
+    border-color: #eeba0b; /*yellow*/
+  }
+  /* Styles for radio button with focus */
+  .custom-radio:focus+label::before {
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  }
+  /* Styles for a radio button that has focus and is not in the checked state */
+  .custom-radio:focus:not(:checked)+label::before {
+    border-color: #80bdff;
+  }
+  /* Styles for a radio button that is in checked state */
+  .custom-radio:checked+label::before {
+    border-color: #eeba0b; /*yellow*/
+    background-color: #eeba0b;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
+  }
+  /* Styles for a radio button in the disabled state */
+  .custom-radio:disabled+label::before {
+    background-color: #e9ecef;
+  }
+
+/* Task description */
+
+main .task
+{
+    float: left;
+    color: #fff;
+    margin: 20px;
+    margin-top: 20px;
+    text-align: left;
+    width: 75%;
+}
+
+main .task h1{font-size: 50px;}
+main .task p{ margin: 20px left;}
+
