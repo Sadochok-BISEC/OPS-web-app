@@ -14,7 +14,6 @@ In this branch, user registration and authorization is implemented in the main a
 <p>Получили доступ к сайту(авторизовались) / Got access to the site (logged in)</p><img src="https://github.com/Sadochok-BISEC/OPS-web-app/blob/no_users/img_desc/d4.png"/><br>
 <p>Информация о проекте / Information about the project</p><img src="https://github.com/Sadochok-BISEC/OPS-web-app/blob/no_users/img_desc/d5.png"/><br>
 <p>Страница с контактами / Contacts page</p><img src="https://github.com/Sadochok-BISEC/OPS-web-app/blob/no_users/img_desc/d6.png"/><br>
-<p>Страница с контактами / Contacts page</p><img src="https://github.com/Sadochok-BISEC/OPS-web-app/blob/no_users/img_desc/d6.png"/><br>
 <p>Задание на страницах Симплекс и Монте-Карло методы / Simplex and Monte Carlo methods</p><img src="https://github.com/Sadochok-BISEC/OPS-web-app/blob/no_users/img_desc/d7.png"/><br>
 <p>Решение задачи Симплекс методом / Solving the problem by the Simplex method</p><img src="https://github.com/Sadochok-BISEC/OPS-web-app/blob/no_users/img_desc/d8_simplex.png"/><br>
 <p>Решение задачи Монте-Карло методом / Solving the problem by the Monte Carlo method</p><img src="https://github.com/Sadochok-BISEC/OPS-web-app/blob/no_users/img_desc/d9_monte.png"/><br>
